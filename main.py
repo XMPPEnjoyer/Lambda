@@ -3,7 +3,7 @@ import sys
 import time
 import subprocess
 from datetime import datetime
-import utils.manager
+import utils.proc
 import colorama
 colorama.init()
 os.system('cls' if os.name == 'nt' else 'clear')
