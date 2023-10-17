@@ -2,7 +2,6 @@ import os
 def clear():
   os.system('cls' if os.name == 'nt' else 'clear')
 os.system("pip install tqdm")
-
 import sys
 from tqdm import tqdm
 dependants=[
@@ -11,7 +10,7 @@ dependants=[
   "pip install tqdm",
   "apt-get install lua5.4",
   "apt-get install luarocks",
-  "",
+  "apt install golang",
   ]
 for i in tqdm(range(len(dependants))):
   os.system(f"{dependants[i]} && clear")
