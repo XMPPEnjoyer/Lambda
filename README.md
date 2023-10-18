@@ -6,3 +6,5 @@
 
 
 ## Future Goals
+
+## LambdScript Documentation 
