@@ -1,27 +1,24 @@
-import os
+import os,sys,utils.init,atexit
 def clear():
   os.system('cls' if os.name == 'nt' else 'clear')
-os.system("pip install tqdm")
-import sys
-from tqdm import tqdm
-dependants=[
-  "apt install tsu",
-  "pip install colorama",
-  "pip install tqdm",
-  "apt-get install lua5.4",
-  "apt-get install luarocks",
-  "apt install golang",
-  ]
-for i in tqdm(range(len(dependants))):
-  os.system(f"{dependants[i]} && clear")
-import time
-import subprocess
+import time,subprocess,utils.proc,colorama,utils.server,asyncio,webbrowser,subprocess
 from datetime import datetime
-import utils.proc
-import colorama
 colorama.init()
 clear()
 def log(txt):
-  print(f"({colorama.Fore.RED}λ{colorama.Style.RESET_ALL}) {txt}")
-log("webserver started at https://localhost:2077")
-os.system("python3 -m http.server -d $(pwd)/utils/interface/ 2077")
+  print(f"({colorama.Fore.RED}λ{colorama.Style .RESET_ALL}) {txt}")
+log("init proc")
+time.sleep(1)
+proc = utils.proc.linux_proc()
+log(proc)
+time.sleep(1)
+log("init server")
+time.sleep(1)
+
+webui = subprocess.Popen(["python","-m","http.server","-d","$(pwd)/utils/interface","2077"])
+
+
+while True:
+  webui()
+
+

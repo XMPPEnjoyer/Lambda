@@ -1,4 +1,0 @@
-import "fmt"
-func main()  {
-  
-}

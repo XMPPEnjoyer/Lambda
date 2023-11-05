@@ -1,4 +1,4 @@
-  body {
+body {
   background-color: #212121;
  font-family: 'Capriola';font-size: 22px;
 }
@@ -57,9 +57,61 @@
   display: block;
 }
 .dropdown-content a:hover {background-color: #252525}
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-button {background-color: #292929;}
+.ui {
+  border-radius: 10px;
+  position: absolute;
+  z-index: 10;
+  background-color: #191919;
+  border: 5px solid #292929;
+  text-align: left;
 }
-.dropdown:hover .dropdown-button {
+
+.uiheader {
+  user-select: none;
+  padding: 10px;
+  cursor: move;
+  z-index: 11;
   background-color: #292929;
+  color: #fff;
 }
+.circle_close {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 25px;
+      height: 25px;
+    
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: red;
+    }
+
+  .circle_minimize {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 25px;
+      height: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: yellow;
+  }
+.circle_maximize {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 25px;
+      height: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: lightgreen;
+     
+    }

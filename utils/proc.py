@@ -7,7 +7,7 @@ def linux_proc():
   procids=os.listdir("/proc/")
   for letter in albafet:
     for pid in procids:
-      if pid.contains(letter):
+      if letter in pid:
        procids.remove(pid)
   return procids
  
