@@ -15,10 +15,5 @@ time.sleep(1)
 log("init server")
 time.sleep(1)
 
-webui = subprocess.Popen(["python","-m","http.server","-d","$(pwd)/utils/interface","2077"])
-
-
-while True:
-  webui()
 
 
