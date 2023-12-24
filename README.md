@@ -1,7 +1,11 @@
+# Lambda
+## Features
 ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
+@@more will be added@@
++ Memory Editor
++ Packet Modifier,Looper,Logger
++ Macro Builder
++ ROM Editor/Decompiler
++ Application action veiwer
++ Script Editor
 ```
