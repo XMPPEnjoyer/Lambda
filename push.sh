@@ -1,3 +1,3 @@
 git add .
-git commit -m "CB&T"
+git commit -m "$1"
 git push -f

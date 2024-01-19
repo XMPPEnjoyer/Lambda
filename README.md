@@ -2,7 +2,7 @@
 
 ---
 ## Features
- Lambda boasts a variety of features such as
+  Lambda boasts a variety of features such as
  ```diff
      +Memory Editor (edits the memory values of an application)
      +Network Hack (allows for the replacement and editing of data inside of packets)
@@ -17,7 +17,7 @@
 ---
 
 ## Applications
- Lambda can be used in many different fields such as Game Cheating and Malware research.
+  Lambda can be used in many different fields such as Game Cheating and Malware research.
 
 ---
 
