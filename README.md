@@ -1,8 +1,11 @@
 # Lambda
-
+---
+## Authors
+- [@C4T0P1A](https://www.github.com/C4T0P1A)
+- [@Logging4J](https://www.github.com/Logging4J)
 ---
 ## Features
-  Lambda boasts a variety of features such as
+  - Lambda boasts a variety of features such as
  ```diff
      +Memory Editor (edits the memory values of an application)
      +Network Hack (allows for the replacement and editing of data inside of packets)
@@ -13,20 +16,13 @@
      +Multi-Decompiler (Decomps unity,unreal,and most other things)
      +Custom scripting language
   ```
-
 ---
-
 ## Applications
-  Lambda can be used in many different fields such as Game Cheating and Malware research.
-
+ - Lambda can be used in many different fields such as Game Cheating and Malware research.
 ---
-
 ## Current Release
-- [v0.0.1](https://github.com/C4T0P1A/Lambda/releases/)
-
+- [b0.0.0](https://github.com/C4T0P1A/Lambda/releases/)
 ---
+## Wiki
 
-## Authors
-- [@C4T0P1A](https://www.github.com/C4T0P1A)
-- [@Logging4J](https://www.github.com/Logging4J)
 
