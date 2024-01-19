@@ -1,19 +1,54 @@
-_VERSION_ = "0.0.1";
-scroll=0;command_text="";textoffset=0;
+_VERSION_ = "1";
+scroll = 0;
+command_text = "";
+textoffset = 0;
 local socket = require("socket");
-local interface = require("utils/Interface/interface");
-local command_manager = require("utils/manager")
-local logger_font = love.graphics.newFont("utils/font/font.ttf", 30);
+local LambdaUI = require("utils/LambdaUI/main")
+local logger_font = love.graphics.newFont("utils/font/Code New Roman.otf", 45);
 love.graphics.setFont(logger_font);
+love.keyboard.setTextInput(true)
 local major, minor, revision, codename = love.getVersion()
-local log_list={"Welcome to Lambda B-".._VERSION_,
-  "Running on "..string.format("Love.%d.%d.%d", major, minor, revision);};local command_history_counter=0;local command_history={"","","","","","","","","","","","","",""};function lambda_log(str)table.insert(log_list, str);end;
-function send_cmd(cmd)command_manager.command(cmd)lambda_log(cmd);table.insert(command_history,1, cmd)command_history_counter=0;command_text="";textoffset=textoffset+25-scroll;if(#log_list>8)then scroll=scroll+25;end;
+function love.load()
+  love.keyboard.setKeyRepeat(true);
 end;
-
-function love.load()love.keyboard.setKeyRepeat(true);end;
-function love.textinput(t)command_text=command_text..t;end;
-function love.keypressed(key)if(key=="tab")then if(command_history_counter<=10)then command_history_counter=(command_history_counter+1)%#command_history;command_text=command_history[command_history_counter]else command_history_counter=0;command_text="";end;end;if(key=="backspace")then command_text=command_text:sub(1, -2);end;if(key=="escape")then love.event.quit();end;if(key=="return")then send_cmd(command_text)end;end;function love.wheelmoved(x, y)if y > 0 then scroll=scroll-y-27;elseif y < 0 then scroll=scroll+y+27;end;end;function love.draw()love.graphics.setColor(0.3,0.1,0.2)love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight());love.graphics.setColor(1,1,1);for log_counter,logged_text in pairs(log_list) do love.graphics.printf(">>> "..logged_text, 0, log_counter*25-scroll, 2000, 'left');end;love.graphics.printf("> "..command_text, 0, 25+#log_list*25-scroll, 1000, 'left');end;function love.textinput(t)command_text = command_text .. t;end;local pt=0;function love.update(dt)if(scroll < 0)then scroll=0;end;pt=pt+1;if(pt==10) then interface.start();lambda_log("Interface started at localhost:3621");end;
+function love.textinput(t)
+  command_text = command_text .. t;
 end;
+function love.update(dt)
+LambdaUI.update(dt)
+windata={
+ mouse_x=love.mouse.getX(),
+ mouse_y=love.mouse.getY(),
+ window_width=love.graphics.getWidth(),
+ window_height=love.graphics.getHeight(),
+};
+silly_billy_ui_height=45+windata.window_height/50
+ui_round=15;
+end;
+function c(r,g,b)love.graphics.setColor(r,g,b);end;
+function love.draw()
+  c(0.12, 0.12, 0.12);
+  love.graphics.rectangle("fill", 0, 0, windata.window_width, windata.window_height);
+  c(0.10, 0.10, 0.10);
+  love.graphics.rectangle("fill", 0, 0, windata.window_width, 45+windata.window_height/50,15,15,32676);
+  c(1,1,1);
+  love.graphics.print("| λ",windata.window_width-45*2,5);
+  local Lambda_Tools = { 
+   "Memory Editor",
+   "Network Hack",
+   "APK Editor",
+   "Decompiler",
+   "Macro Builder",
+   "Actions",
+  }
+  local tools_tab=LambdaUI.Dropdown(5,5,150,35+windata.window_height/50,25,"Tools",Lambda_Tools,true,270,50)
+  local scripts_tab=LambdaUI.Dropdown(165,5,190,35+windata.window_height/50,25,"Scripts",{"Load","Save","Editor"},true,200,50)
+  local rce_tab=LambdaUI.Dropdown(165+190+10,5,120,35+windata.window_height/50,25,"RCE",{"SQUAX3","ASMCrash","Log4Shell","Bleeding Pipe"},true,240,50)
 
- 
+
+
+
+  if(windata.window_width<=700) then
+      LambdaUI.Dropdown(windata.window_width-200,5,110,35+windata.window_height/50,25,"...",{},true,200,40)
+  end;
+end;
