@@ -27,14 +27,11 @@ function LambdaUI.Dropdown(x,y,w,h,r,text,buttons,s,option_width,option_height)
 local opened=false
 local updown=""
 local offset=0
-if(s==true)then love.graphics.setColor(0,0,0,0.09);love.graphics.rectangle("fill",x+6,y+6,w,h,r,r,32676);end;
+if(s==true)then love.graphics.setColor(0,0,0,0.09);love.graphics.rectangle("fill",x+6,y+6,w,h,r,r,32676);
   love.graphics.setColor(0.21,0.21,0.21)
   if hover(x,y,w,h+10+offset) then
-   love.graphics.setColor(0.18,0.18,0.18)
-   opened=true;updown="▲"
-  else
-   opened=false;updown="▼"
-  end;
+  love.graphics.setColor(0.18,0.18,0.18);opened=true;updown="▲"
+  else opened=false;updown="▼";end;
   love.graphics.rectangle("fill",x,y,w,h,r,r,32676)
   love.graphics.setColor(1,1,1)
   love.graphics.print(text.." "..updown,x+w/10,y+h/4,0,0.7,0.7)
@@ -44,7 +41,6 @@ if(s==true)then love.graphics.setColor(0,0,0,0.09);love.graphics.rectangle("fill
       if hover(x,y,option_width,option_height+offset) then
         opened=true;updown="▲"
       end
-              
         love.graphics.setColor(0.21,0.21,0.21)
         love.graphics.rectangle("fill",x,y+offset,option_width,option_height,r,r,32676)
         love.graphics.setColor(1,1,1)
