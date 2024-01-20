@@ -3,6 +3,7 @@
 ## Authors
 - [@C4T0P1A](https://www.github.com/C4T0P1A)
 - [@Logging4J](https://www.github.com/Logging4J)
+- [@LilyCodesThings](https://github.com/lilyCodesThings)
 ---
 ## Features
   - Lambda boasts a variety of features such as
@@ -21,8 +22,9 @@
  - Lambda can be used in many different fields such as Game Cheating and Malware research.
 ---
 ## Current Release
-- [b0.0.0](https://github.com/C4T0P1A/Lambda/releases/)
+- [Releases](https://github.com/C4T0P1A/Lambda/releases/)
 ---
 ## Wiki
-
-
+- [Lambda Script]()
+- [Usage]()
+- [Tools]()
