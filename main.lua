@@ -1,54 +1,57 @@
+               ---[Lambda]---
+---[This shit made me fucking depressed]---
 _VERSION_ = "1";
-scroll = 0;
-command_text = "";
-textoffset = 0;
-local socket = require("socket");
-local LambdaUI = require("utils/LambdaUI/main")
-local logger_font = love.graphics.newFont("utils/font/Code New Roman.otf", 45);
-love.graphics.setFont(logger_font);
-love.keyboard.setTextInput(true)
-local major, minor, revision, codename = love.getVersion()
+local LambdaUI = require("utils/LambdaUI/main");
+local C_LIB=require("utils/lang/c");
+local font = love.graphics.newFont("utils/font/Code New Roman.otf", 45);
+love.graphics.setFont(font);
+local major, minor, revision, codename = love.getVersion();
 function love.load()
   love.keyboard.setKeyRepeat(true);
+  love.keyboard.setTextInput(true);
 end;
-function love.textinput(t)
-  command_text = command_text .. t;
-end;
+tabscroll=0;
 function love.update(dt)
-LambdaUI.update(dt)
-windata={
- mouse_x=love.mouse.getX(),
- mouse_y=love.mouse.getY(),
- window_width=love.graphics.getWidth(),
- window_height=love.graphics.getHeight(),
-};
-silly_billy_ui_height=45+windata.window_height/50
-ui_round=15;
+ LambdaUI.update(dt)
+ mx=love.mouse.getX()
+ my=love.mouse.getY()
+ window_width=love.graphics.getWidth()
+ window_height=love.graphics.getHeight()
+
+if (tabscroll < 0) then
+    tabscroll = 0
+end
 end;
-function c(r,g,b)love.graphics.setColor(r,g,b);end;
 function love.draw()
+  GUI();
+end;
+
+
+function c(r,g,b)love.graphics.setColor(r,g,b);end;
+function hover(x,y,w,h)if(mx>=x and mx<=x+w and my>=y and my<=y+h)then return true;end;end;
+function GUI()
+  Tabs={"Mem Editor","Net Hack","Uni Decomp","RCE Shit","Scripts","Misc","Themes","Settings",};
   c(0.12, 0.12, 0.12);
-  love.graphics.rectangle("fill", 0, 0, windata.window_width, windata.window_height);
-  c(0.10, 0.10, 0.10);
-  love.graphics.rectangle("fill", 0, 0, windata.window_width, 45+windata.window_height/50,15,15,32676);
-  c(1,1,1);
-  love.graphics.print("| λ",windata.window_width-45*2,5);
-  local Lambda_Tools = { 
-   "Memory Editor",
-   "Network Hack",
-   "APK Editor",
-   "Decompiler",
-   "Macro Builder",
-   "Actions",
-  }
-  local tools_tab=LambdaUI.Dropdown(5,5,150,35+windata.window_height/50,25,"Tools",Lambda_Tools,true,270,50)
-  local scripts_tab=LambdaUI.Dropdown(165,5,190,35+windata.window_height/50,25,"Scripts",{"Load","Save","Editor"},true,200,50)
-  local rce_tab=LambdaUI.Dropdown(165+190+10,5,120,35+windata.window_height/50,25,"RCE",{"SQUAX3","ASMCrash","Log4Shell","Bleeding Pipe"},true,240,50)
-
-
-
-
-  if(windata.window_width<=700) then
-      LambdaUI.Dropdown(windata.window_width-200,5,110,35+windata.window_height/50,25,"...",{},true,200,40)
+  love.graphics.rectangle("fill", 0, 0, window_width, window_height);
+  c(0.08, 0.08, 0.08);
+  love.graphics.rectangle("fill", 0, 0, window_width/3.5, window_height,15,15,32676);
+  c(0.13,0.13,0.13);
+  love.graphics.rectangle("fill", math.abs(5.5,window_width/5), 60+tabscroll,10,600-#Tabs*50,10,10,32676);
+function love.wheelmoved(x, y)
+  if hover(0,45+window_height/50,window_width/3.5,window_height) then
+    if y > 0 then
+        tabscroll = tabscroll - y - 27
+    elseif y < 0 then
+        tabscroll = tabscroll + y + 27
+    end;
   end;
+end;
+  for i,x in ipairs(Tabs) do
+  if LambdaUI.Button(math.abs(32.5,window_width/5),i*65-tabscroll,window_width/5+25,55,15,x) then
+  love.quit()
+  end;
+  end;
+    c(0.10, 0.10, 0.10);
+  love.graphics.rectangle("fill", 0, 0, window_width, 45+window_height/50,15,15,32676);
+  c(1,1,1);love.graphics.print("| λ",window_width-45*2,5);
 end;
