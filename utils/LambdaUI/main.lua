@@ -4,7 +4,6 @@ function LambdaUI.update(dt)
  my=love.mouse.getY()
  window_width=love.graphics.getWidth()
  window_height=love.graphics.getHeight()
-
 end;
 function hover(x,y,w,h) 
   if(mx>=x and mx<=x+w and my>=y and my<=y+h)then return true;end;

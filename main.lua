@@ -35,7 +35,6 @@ function hover(x,y,w,h)if(mx>=x and mx<=x+w and my>=y and my<=y+h)then return tr
 function GUI()
   Tabs={"Utilities","Decompiler","RCE","Scripts","Plugins","Misc","Themes","Proccesses","Settings"};
   selection=Tabs[1];
-
   c(0.12, 0.12, 0.12);
   love.graphics.rectangle("fill", 0, 0, window_width, window_height);
   c(0.08, 0.08, 0.08);
@@ -58,7 +57,7 @@ end;
    local response=LambdaUI.Button(math.abs(32.5,window_width/5),i*65-tabscroll,window_width/5+25,55,15,x)
   end;
   
-  if(response=="RCE")then love.quit(); end;
+  if(response==Tabs[1])then love.quit(); end;
 
   end;
     c(0.10, 0.10, 0.10);
