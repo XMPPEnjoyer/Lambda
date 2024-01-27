@@ -1,4 +1,3 @@
-<div align="center">
 # Lambda
 ---
 ## Authors
@@ -29,4 +28,3 @@
 - [Lambda Script]()
 - [Usage]()
 - [Tools]()
-</div>
