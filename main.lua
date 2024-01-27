@@ -41,29 +41,28 @@ function GUI()
   love.graphics.rectangle("fill", 0, 0, window_width/3.5, window_height,15,15,32676);
   c(0.13,0.13,0.13);
   love.graphics.rectangle("fill", math.abs(5.5,window_width/5), 60+tabscroll,10,600-#Tabs*50,5,5,32676);
-function love.wheelmoved(x, y)
-  if hover(0,45+window_height/50,window_width/3.5,window_height) then
-    if y > 0 then
-        tabscroll = tabscroll - y - 27
-    elseif y < 0 then
-        tabscroll = tabscroll + y + 27
+  function love.wheelmoved(x, y)
+    if hover(0,45+window_height/50,window_width/3.5,window_height) then
+      if y > 0 then
+          tabscroll = tabscroll - y - 27
+      elseif y < 0 then
+          tabscroll = tabscroll + y + 27
+      end;
     end;
   end;
-end;
+  local response
   for i,x in ipairs(Tabs) do
   if selection==x then 
-   local response=LambdaUI.Button(math.abs(32.5,window_width/5),i*65-tabscroll,window_width/5+25,55,15,">"..x)
+    response=LambdaUI.Button(math.abs(32.5,window_width/5),i*65-tabscroll,window_width/5+25,55,15,">"..x)
   else 
-   local response=LambdaUI.Button(math.abs(32.5,window_width/5),i*65-tabscroll,window_width/5+25,55,15,x)
+    response=LambdaUI.Button(math.abs(32.5,window_width/5),i*65-tabscroll,window_width/5+25,55,15,x)
   end;
-  
   if(response==Tabs[1])then love.quit(); end;
-
+    
   end;
-    c(0.10, 0.10, 0.10);
+  c(0.10, 0.10, 0.10);
   love.graphics.rectangle("fill", 0, 0, window_width, 45+window_height/50,15,15,32676);
-  c(1,1,1);love.graphics.print("| ",window_width-30*2,4);
-  love.graphics.print("  λ",window_width-30*2,9);
+  c(1,1,1);love.graphics.print("| ",window_width-30*2,4);love.graphics.print("  λ",window_width-30*2,9);
   love.graphics.print("Status:"..status,5,10);
   
 end;
